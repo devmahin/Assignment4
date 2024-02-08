@@ -10,7 +10,6 @@ function calculateMoney(ticketSale) {
 
 
 
-
 function checkName(name) {
     if (typeof name !== "string") {
         return "invalid"
@@ -28,10 +27,9 @@ function checkName(name) {
 
 
 
-
 function deleteInvalids(array) {
     if (!Array.isArray(array)) {
-        return "Invalid"
+        return "Invalid Array"
     }
     let newArray = [];
     for (let i = 0; i < array.length; i++) {
@@ -47,13 +45,13 @@ function deleteInvalids(array) {
 
 function password(obj) {
     if (typeof obj !== "object" || Array.isArray(obj)) {
-        return "Invalid"
+        return "invalid"
     }
     else if (!obj.name || !obj.siteName || !obj.birthYear) {
-        return "Invalid"
+        return "invalid"
     }
     else if (obj.birthYear.toString().length < 4) {
-        return "Invalid"
+        return "invalid"
     }
 
     let companyName = obj.siteName;
@@ -87,5 +85,4 @@ function monthlySavings(arr, livingCost) {
         return "earn more"
     }
 }
-
 
