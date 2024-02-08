@@ -1,27 +1,22 @@
-// ( 10 * 120) - ( 500 + (8 * 50) ) = 300
 function calculateMoney(ticketSale) {
     if (ticketSale < 0) {
         return "Invalid Number"
     }
     let ticketPrice = 120;
     let everydayCost = 500 + (8 * 50);
-    return ticketSale * ticketPrice - (everydayCost)
+    return (ticketSale * ticketPrice) - everydayCost
 }
-// console.log(
-// calculateMoney(10)
-// )
 
 
 
 
 
 function checkName(name) {
-    if(typeof name !== "string"){
+    if (typeof name !== "string") {
         return "invalid"
     }
     let lastCarectar = "Ayieouw";
     let lastIndex = name.charAt(name.length - 1).toLowerCase();
-    // console.log(lastIndex)
     for (let i = 0; i < lastCarectar.length; i++) {
         if (lastIndex === lastCarectar[i].toLowerCase()) {
             return "Good Name";
@@ -29,36 +24,35 @@ function checkName(name) {
     }
     return "Bad Name"
 }
-// console.log(checkName("MAHIN"))
-// Tonoy, utsho , Roide, shanto
 
 
-function deleteInvalids(array){
-    if(!Array.isArray(array)){
+
+
+
+function deleteInvalids(array) {
+    if (!Array.isArray(array)) {
         return "Invalid"
     }
     let newArray = [];
-    for(let i = 0; i<array.length; i++){
-        if(typeof array[i] === "number" && !isNaN(array[i])){
-                newArray.push(array[i])
+    for (let i = 0; i < array.length; i++) {
+        if (typeof array[i] === "number" && !isNaN(array[i])) {
+            newArray.push(array[i])
         }
     }
     return newArray;
 }
-const arrays = deleteInvalids(["1" , {num:2} , NaN ])
-// console.log(arrays)
 
 
 
 
 function password(obj) {
-    if(typeof obj !== "object" || Array.isArray(obj)){
+    if (typeof obj !== "object" || Array.isArray(obj)) {
         return "Invalid"
     }
-    else if(!obj.name || !obj.siteName || !obj.birthYear){
+    else if (!obj.name || !obj.siteName || !obj.birthYear) {
         return "Invalid"
     }
-    else if(obj.birthYear.toString().length < 4){
+    else if (obj.birthYear.toString().length < 4) {
         return "Invalid"
     }
 
@@ -66,12 +60,32 @@ function password(obj) {
     let com = companyName.charAt(0).toUpperCase() + companyName.slice(1)
     let birthDay = obj.birthYear;
     let seoName = obj.name;
-    return `${com}#${seoName}@${birthDay}` 
+    return `${com}#${seoName}@${birthDay}`
+}
+
+
+
+
+
+function monthlySavings(arr, livingCost) {
+    let vat = 0;
+    let allPaymentTotal = 0;
+    let totalSaving = 0;
+    if(!Array.isArray(arr) || typeof livingCost !== "number"){
+        return "invalid input"
     }
+    for (let i = 0; i < arr.length; i++) {
+        allPaymentTotal += arr[i];
+        if (arr[i] >= 3000) {
+            vat += arr[i] * 20 / 100;
+        }
+    }
+    totalSaving = (allPaymentTotal - vat) - livingCost;
+    if(totalSaving >= 0){
+        return totalSaving;
+    }else{
+        return "earn more"
+    }
+}
 
 
-
-
-console.log(
-password({ name: "rahat" , siteName: "mahin" ,  birthYear: 200})
-)
